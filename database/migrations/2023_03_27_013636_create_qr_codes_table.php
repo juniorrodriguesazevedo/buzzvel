@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('linkedin');
             $table->string('github');
+            $table->string('url');
             $table->timestamps();
         });
     }

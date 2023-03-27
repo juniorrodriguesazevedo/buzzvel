@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\QrCode;
 use App\Http\Requests\QrCodeRequest;
 
 class QrCodeController extends Controller
@@ -19,14 +20,24 @@ class QrCodeController extends Controller
      */
     public function store(QrCodeRequest $request)
     {
-        //
+        $data = $request->validated();
+        $qrCode = QrCode::create($data);
+
+        return redirect()->route('qrcode.show', compact('qrCode'));
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $name)
+    public function show(QrCode $qrCode)
     {
-        
+        return view('qrcode.show', compact('qrCode'));
+    }
+
+    public function profile(string $name)
+    {
+        $qrCode = QrCode::firstWhere('name', $name);
+
+        return view('qrcode.profile', compact('qrCode'));
     }
 }
