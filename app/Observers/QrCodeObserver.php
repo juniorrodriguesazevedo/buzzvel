@@ -12,7 +12,7 @@ class QrCodeObserver
      */
     public function creating(QrCode $qrCode): void
     {
-        $url = env('APP_URL');
+        $url = 'https://fitagenda.com.br';
         $name = Str::slug($qrCode->name, '-');
         $qrCode->url = "$url/$name";
     }
