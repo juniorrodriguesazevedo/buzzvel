@@ -14,6 +14,6 @@ class QrCodeObserver
     {
         $url = env('APP_URL');
         $name = Str::slug($qrCode->name, '-');
-        $qrCode->url = "$url/$name";
+        $qrCode->url = "$url/profile/$name";
     }
 }
